@@ -2,17 +2,17 @@ import json
 
 import scrapy
 
-from ..items import FYPItem
+from ..items import OnezeroScraperItem
 
 
 class DarazSpider(scrapy.Spider):
     name = "daraz_spider"
-    page_num = 88
+    page_num = 1
     pre = 'https://www.noon.com/_svc/catalog/api/u/'
     start_urls = [
         f"https://www.daraz.pk/smartphones/?page={page_num}&spm=a2a0e.searchlist.cate_1.1.123c185bvlGPp9"
     ]
-    pages_to_scrape = 89
+    pages_to_scrape = 2
 
     regex_for_product = 'app.run(...)+\)\;'
     regex_for_list = 'window.pageData=(...)*\W\}{3}'
@@ -35,7 +35,7 @@ class DarazSpider(scrapy.Spider):
 
     def parse_product(self, response):
         try:
-            items = FYPItem()
+            items = OnezeroScraperItem()
             reviews = []
             url = response.meta.get('url')
             product_data = response.text[response.text.find('app.run'):]

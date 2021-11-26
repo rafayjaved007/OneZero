@@ -8,5 +8,10 @@ import scrapy
 
 class OnezeroScraperItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    title = scrapy.Field()
+    rating = scrapy.Field()
+    image_url = scrapy.Field()
+    original_price = scrapy.Field()
+    sale_price = scrapy.Field()
+    reviews = scrapy.Field()
+    product_url = scrapy.Field()
